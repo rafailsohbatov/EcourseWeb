@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.example.ecourseweb.model.Student" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -8,17 +9,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<Student> studentList = (List<Student>) request.getAttribute("studentList");%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Ecourse</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <c:import url="/static/import.jsp"></c:import>
 </head>
 <body>
-<div id="container">
-    <jsp:include page="/static/header.jsp"></jsp:include>
-    <jsp:include page="/static/menu.jsp"></jsp:include>
-    <div id="content">
-
+<c:import url="/static/info.jsp"></c:import>
+<c:import url="/static/header.jsp"></c:import>
+<c:import url="/static/menu.jsp"></c:import>
+<div class="ui-layout-center">
         <table border="1" width="100%">
             <thead>
             <tr>
@@ -46,9 +46,9 @@
             <% } %>
             </tbody>
         </table>
-    </div>
-    <jsp:include page="/static/footer.jsp"></jsp:include>
 </div>
+<c:import url="/static/footer.jsp"></c:import>
 </body>
 </html>
+
 

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="menu">
-  <a href="ss?action=getStudentList" ><input type="button" value="Student Data" class="btnDesign"></a>
+
+<div class="ui-layout-west">  <a href="ss?action=getStudentList" ><input type="button" value="Student Data" class="btnDesign"></a>
   <a href="ts?action=getTeacherList" ><input type="button" value="Teacher Data" class="btnDesign"></a>
-</div>
+  <a href="ps?action=getPaymentList" ><input type="button" value="Payment Data" class="btnDesign"></a></div>

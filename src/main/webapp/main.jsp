@@ -8,9 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ecourse</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/test.js"></script>
+    <c:import url="/static/import.jsp"></c:import>
 </head>
 <body>
 <div id="container">
