@@ -34,7 +34,8 @@ public class StudentServlet extends HttpServlet {
             action = request.getParameter("action");
             if (action.equalsIgnoreCase("getStudentList")) {
                 List<Student> studentList = studentService.getStudentList();
-                out.write(studentList.toString());
+                request.setAttribute("studentList",studentList);
+                request.getRequestDispatcher("WEB-INF/pages/studentList.jsp").forward(request,response);
 
             }
         } catch (Exception ex) {

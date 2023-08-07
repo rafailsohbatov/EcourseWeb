@@ -8,22 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Ecourse</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Ecourse</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div id="container">
-  <div id="header">
-    <h1 style="margin-bottom:0;">E-course</h1>
-  </div>
-  <div id="menu">
-    <a href="ss?action=getStudentList" ><input type="button" value="Student Data" class="btnDesign"></a>
-    <a href="ts?action=getTeacherList" ><input type="button" value="Teacher Data" class="btnDesign"></a>
-  </div>
-  <div id="content"></div>
-  <div id="footer">
-
-  </div> </div>
+    <jsp:include page="static/header.jsp"></jsp:include>
+    <jsp:include page="static/menu.jsp"></jsp:include>
+    <div id="content">
+    </div>
+    <jsp:include page="static/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
 
