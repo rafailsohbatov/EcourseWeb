@@ -7,10 +7,10 @@
   <c:import url="static/import.jsp"></c:import>
 </head>
 <body>
+<c:import url="static/header.jsp"></c:import>
 <div class="ui-layout-center">
 
 </div>
-<c:import url="static/header.jsp"></c:import>
 <c:import url="static/menu.jsp"></c:import>
 <c:import url="static/info.jsp"></c:import>
 <c:import url="static/footer.jsp"></c:import>

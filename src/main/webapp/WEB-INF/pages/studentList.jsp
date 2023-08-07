@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.example.ecourseweb.model.Student" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 07/08/2023
@@ -8,18 +7,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% List<Student> studentList = (List<Student>) request.getAttribute("studentList");%>
 <!DOCTYPE html>
 <html>
 <head>
     <c:import url="/static/import.jsp"></c:import>
+    <script type="text/javascript" src="js/student.js"></script>
 </head>
 <body>
-<c:import url="/static/info.jsp"></c:import>
 <c:import url="/static/header.jsp"></c:import>
-<c:import url="/static/menu.jsp"></c:import>
 <div class="ui-layout-center">
-        <table border="1" width="100%">
+        <table class="display" id="studentTableId">
             <thead>
             <tr>
                 <th>ID</th>
@@ -30,23 +27,20 @@
             </tr>
             </thead>
             <tbody>
-            <% for (Student student : studentList) { %>
+            <c:forEach items="${studentList}" var="sl" >
             <tr>
-                <td><%= student.getId()%>
-                </td>
-                <td><%= student.getName()%>
-                </td>
-                <td><%= student.getSurname()%>
-                </td>
-                <td><%= student.getAddress()%>
-                </td>
-                <td><%= student.getPhone()%>
-                </td>
+                <td>${sl.id}</td>
+                <td>${sl.name}</td>
+                <td>${sl.surname}</td>
+                <td>${sl.address}</td>
+                <td>${sl.phone}</td>
             </tr>
-            <% } %>
+            </c:forEach>
             </tbody>
         </table>
 </div>
+<c:import url="/static/info.jsp"></c:import>
+<c:import url="/static/menu.jsp"></c:import>
 <c:import url="/static/footer.jsp"></c:import>
 </body>
 </html>

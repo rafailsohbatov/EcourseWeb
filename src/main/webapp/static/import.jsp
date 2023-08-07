@@ -8,7 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <title>Ecourse</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="js/jquery/jquery-latest.js"></script>
 <script src="js/jquery/jquery.layout-latest.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css" >

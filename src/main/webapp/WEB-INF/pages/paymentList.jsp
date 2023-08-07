@@ -9,13 +9,14 @@
 <html>
 <head>
     <c:import url="/static/import.jsp"></c:import>
+    <script type="text/javascript" src="js/payment.js" ></script>
 </head>
 <body>
-<c:import url="/static/info.jsp"></c:import>
+
 <c:import url="/static/header.jsp"></c:import>
-<c:import url="/static/menu.jsp"></c:import>
+
 <div class="ui-layout-center">
-        <table border="1" width="100%">
+        <table class="display" id="paymentTableId">
             <thead>
             <tr>
                 <th>ID</th>
@@ -48,6 +49,8 @@
             </tbody>
         </table>
 </div>
+<c:import url="/static/info.jsp"></c:import>
+<c:import url="/static/menu.jsp"></c:import>
 <c:import url="/static/footer.jsp"></c:import>
 </body>
 </html>
