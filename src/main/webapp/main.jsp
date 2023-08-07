@@ -10,6 +10,7 @@
 <head>
     <title>Ecourse</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/test.js"></script>
 </head>
 <body>
 <div id="container">
@@ -19,6 +20,7 @@
     </div>
     <jsp:include page="static/footer.jsp"></jsp:include>
 </div>
+
 </body>
 </html>
 
