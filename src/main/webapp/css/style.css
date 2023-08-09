@@ -4,6 +4,12 @@
     margin-bottom: 5px;
 }
 
+.lblDesign {
+    width: 100px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
 table {
     width: 100%;
 }

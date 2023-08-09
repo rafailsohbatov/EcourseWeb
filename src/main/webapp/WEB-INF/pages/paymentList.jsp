@@ -52,6 +52,9 @@
 <c:import url="/static/info.jsp"></c:import>
 <c:import url="/static/menu.jsp"></c:import>
 <c:import url="/static/footer.jsp"></c:import>
+<div id="newPaymentDialogId">
+
+</div>
 </body>
 </html>
 

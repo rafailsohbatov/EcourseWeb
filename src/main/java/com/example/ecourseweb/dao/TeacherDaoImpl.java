@@ -42,6 +42,22 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
+    public void addTeacher(Teacher teacher) throws Exception {
+        String sql = "INSERT INTO TEACHER(ID,NAME,SURNAME,DOB,ADDRESS,PHONE,WORK_EXPERIENCE)" +
+                "VALUES(TEACHER_SEQ.NEXTVAL,?,?,?,?,?,?)";
+        try(Connection c = DBHelper.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
+           ps.setString(1,teacher.getName());
+           ps.setString(2,teacher.getSurname());
+           ps.setDate(3,new java.sql.Date(teacher.getDob().getTime()));
+           ps.setString(4,teacher.getAddress());
+           ps.setString(5,teacher.getPhone());
+           ps.setInt(6,teacher.getWork_experience());
+           ps.execute();
+           c.commit();
+        }
+    }
+
+    @Override
     public List<Teacher> getTeacherListByLessonId(Long lessonId) throws Exception {
         List<Teacher> list = new ArrayList<>();
         String sql = "select t.id,t.name ,t.surname from teacher_lesson tl inner join teacher t on t.id = TL.TEACHER_ID \n" +

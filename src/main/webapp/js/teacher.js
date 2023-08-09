@@ -1,71 +1,59 @@
 $(function () {
-    new DataTable('#studentTableId');
+    new DataTable('#teacherTableId');
 
-    $('#newBtnId').val('New Student')
+    $('#newBtnId').val('New Teacher');
 
-    $('#newStudentDialogId').dialog({
-        title: 'New Student',
+    $('#newTeacherDialogId').dialog({
+        title: 'New Teacher',
         modal: true,
         autoOpen: false,
         height: 400,
         width: 400,
         buttons: {
             "Save": function () {
-                addStudent();
+                addTeacher();
                 $(this).dialog('close');
             },
-            "Close": function () {
+            "Clear": function () {
                 $(this).dialog('close');
             }
         }
-    });
+    })
 
-    $('#newBtnId').click(function () {
-        $('#newStudentDialogId').load("views/newStudent.jsp", function () {
-            $(this).dialog('open');
+    $('#newBtnId').click(function (){
+        $("#newTeacherDialogId").load("views/newTeacher.jsp",function(){
+            $('#newTeacherDialogId').dialog('open');
         })
-
     })
 })
 
-function addStudent() {
+function addTeacher(){
     let name = $('#nameId').val();
     let surname = $('#surnameId').val();
     let dob = $('#dobId').val();
     let address = $('#addressId').val();
     let phone = $('#phoneId').val();
+    let workExperience = $('#workExperienceId').val();
 
     let request = {
         name: name,
         surname: surname,
         dob: dob,
         address: address,
-        phone: phone
+        phone: phone,
+        workExperience:workExperience
     };
     $.ajax({
-        url: 'ss?action=addStudent',
+        url: 'ts?action=addTeacher',
         type: 'POST',
         data: request,
         dataType: 'text',
         success: function (response) {
             if (response == 'success') {
-                alert("Student has been successfully added");
-                getStudentList();
+                alert("Teacher has been successfully added");
             } else {
                 alert("Problem ! Student has not been  added");
             }
         }
-    })
+})
 }
-
-function getStudentList() {
-    $.ajax({
-        url: 'ss?action=getStudentData',
-        type: 'GET',
-        dataType: 'html',
-        success: function (response) {
-            $('.ui-layout-center').html(response);
-        }
-    })
-}
-

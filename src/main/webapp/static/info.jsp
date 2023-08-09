@@ -7,5 +7,5 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="ui-layout-east">
-
+<input type="button" value="New" class="btnDesign" id="newBtnId">
 </div>

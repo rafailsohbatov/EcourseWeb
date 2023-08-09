@@ -29,6 +29,11 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public void addTeacher(Teacher teacher) throws Exception {
+        teacherDao.addTeacher(teacher);
+    }
+
+    @Override
     public List<Teacher> getTeacherListByLessonId(Long lessonId) throws Exception {
         return teacherDao.getTeacherListByLessonId(lessonId);
     }
