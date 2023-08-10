@@ -6,16 +6,14 @@ import com.example.ecourseweb.model.Lesson;
 import com.example.ecourseweb.service.LessonService;
 import com.example.ecourseweb.service.LessonServiceImpl;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "LessonServlet", urlPatterns = "/ls")
+@WebServlet(name = "LessonServlet", value = "/ls")
 public class LessonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,6 +37,10 @@ public class LessonServlet extends HttpServlet {
                 List<Lesson> lessonList = lessonService.getLessonByStudentId(studenId);
                 request.setAttribute("lessonList",lessonList);
                 request.getRequestDispatcher("WEB-INF/pages/lessonCombo.jsp").forward(request,response);
+            } else if (action.equalsIgnoreCase("getLessonList")){
+                List<Lesson> lessonList = lessonService.getLessonList();
+                request.setAttribute("lessonList",lessonList);
+                request.getRequestDispatcher("WEB-INF/pages/lessonList.jsp").forward(request,response);
             }
         }catch (Exception ex){
             ex.printStackTrace();
