@@ -26,7 +26,7 @@ public class LessonServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        try{
+        try {
             LessonDao lessonDao = new LessonDaoImpl();
             LessonService lessonService = new LessonServiceImpl(lessonDao);
             response.setContentType("text/html");
@@ -35,14 +35,21 @@ public class LessonServlet extends HttpServlet {
             if (action.equalsIgnoreCase("getLessonListByStudentId")) {
                 Long studenId = Long.valueOf(request.getParameter("studentId"));
                 List<Lesson> lessonList = lessonService.getLessonByStudentId(studenId);
-                request.setAttribute("lessonList",lessonList);
-                request.getRequestDispatcher("WEB-INF/pages/lessonCombo.jsp").forward(request,response);
-            } else if (action.equalsIgnoreCase("getLessonList")){
+                request.setAttribute("lessonList", lessonList);
+                request.getRequestDispatcher("WEB-INF/pages/lessonCombo.jsp").forward(request, response);
+            } else if (action.equalsIgnoreCase("getLessonList")) {
                 List<Lesson> lessonList = lessonService.getLessonList();
-                request.setAttribute("lessonList",lessonList);
-                request.getRequestDispatcher("WEB-INF/pages/lessonList.jsp").forward(request,response);
+                request.setAttribute("lessonList", lessonList);
+                request.getRequestDispatcher("WEB-INF/pages/lessonList.jsp").forward(request, response);
+            } else if (action.equalsIgnoreCase("addLesson")) {
+                Lesson lesson = new Lesson();
+                lesson.setName(request.getParameter("name"));
+                lesson.setTime(Integer.valueOf(request.getParameter("time")));
+                lesson.setPrice(Float.valueOf(request.getParameter("price")));
+                lessonService.addLesson(lesson);
+                out.write("success");
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

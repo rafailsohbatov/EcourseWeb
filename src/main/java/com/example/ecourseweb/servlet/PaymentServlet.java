@@ -67,7 +67,6 @@ public class PaymentServlet extends HttpServlet {
                 List<Payment> paymentList = paymentService.getPaymentList();
                 request.setAttribute("paymentList", paymentList);
                 pageAddress = "WEB-INF/pages/paymentData.jsp";
-                System.out.println("x?");
             }
             if (pageAddress != null) {
                 request.getRequestDispatcher(pageAddress).forward(request, response);

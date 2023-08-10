@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Admin
  */
 public class LessonDaoImpl implements LessonDao {
@@ -23,7 +22,7 @@ public class LessonDaoImpl implements LessonDao {
     public List<Lesson> getLessonList() throws Exception {
         List<Lesson> lessonList = new ArrayList();
         String sql = "Select * from lesson where active = 1";
-        try ( Connection c = DBHelper.getConnection();  Statement s = c.createStatement();  ResultSet rs = s.executeQuery(sql)) {
+        try (Connection c = DBHelper.getConnection(); Statement s = c.createStatement(); ResultSet rs = s.executeQuery(sql)) {
             while (rs.next()) {
                 Lesson lesson = new Lesson();
                 lesson.setId(rs.getLong("Id"));
@@ -34,6 +33,21 @@ public class LessonDaoImpl implements LessonDao {
             }
         }
         return lessonList;
+    }
+
+    @Override
+    public void addLesson(Lesson lesson) throws Exception {
+
+        String sql = "INSERT INTO LESSON(ID,NAME,TIME,PRICE)" +
+                "VALUES(LESSON_SEQ.NEXTVAL,?,?,?)";
+        try (Connection c = DBHelper.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, lesson.getName());
+            ps.setInt(2, lesson.getTime());
+            ps.setFloat(3, lesson.getPrice());
+            ps.execute();
+            c.commit();
+        }
+
     }
 
     @Override
@@ -48,7 +62,7 @@ public class LessonDaoImpl implements LessonDao {
                 "                               ON L.ID = TL.LESSON_ID\n" +
                 "                      WHERE STL.ACTIVE = 1 AND L.ACTIVE = 1 AND S.ID = ? ";
         List<Lesson> lessonList = new ArrayList<>();
-        try ( Connection c = DBHelper.getConnection();  PreparedStatement ps = c.prepareStatement(sql)) {
+        try (Connection c = DBHelper.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setLong(1, studentId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

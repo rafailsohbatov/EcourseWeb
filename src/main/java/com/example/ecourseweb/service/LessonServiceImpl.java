@@ -31,4 +31,9 @@ public class LessonServiceImpl implements LessonService {
         return lessonDao.getLessonByStudentId(studentId);
     }
 
+    @Override
+    public void addLesson(Lesson lesson) throws Exception {
+        lessonDao.addLesson(lesson);
+    }
+
 }

@@ -15,6 +15,7 @@ import java.util.List;
 public interface LessonDao {
 
     List<Lesson> getLessonList() throws Exception;
+    void addLesson(Lesson lesson) throws Exception;
 
     List<Lesson> getLessonByStudentId(Long studentId) throws Exception;
 }
