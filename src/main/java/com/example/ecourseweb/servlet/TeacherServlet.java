@@ -49,6 +49,12 @@ public class TeacherServlet extends HttpServlet {
                 teacher.setWork_experience(Integer.valueOf(request.getParameter("workExperience")));
                 teacherService.addTeacher(teacher);
                 out.write("success");
+            } else if (action.equalsIgnoreCase("getTeacherListByLessonIdAndStudentId")){
+                Long lessonId = Long.parseLong(request.getParameter("lessonId"));
+                Long studentId = Long.parseLong(request.getParameter("studentId"));
+                List<Teacher> teacherList = teacherService.getTeacherListByLessonIdAndStudentId(lessonId,studentId);
+                request.setAttribute("teacherList",teacherList);
+                request.getRequestDispatcher("WEB-INF/pages/teacherCombo.jsp").forward(request,response);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -1,10 +1,7 @@
 package com.example.ecourseweb.servlet;
 
 import com.example.ecourseweb.dao.*;
-import com.example.ecourseweb.model.Lesson;
-import com.example.ecourseweb.model.Payment;
-import com.example.ecourseweb.model.Student;
-import com.example.ecourseweb.model.Teacher;
+import com.example.ecourseweb.model.*;
 import com.example.ecourseweb.service.*;
 
 import javax.servlet.*;
@@ -46,7 +43,7 @@ public class PaymentServlet extends HttpServlet {
                 request.setAttribute("paymentList", paymentList);
                 pageAddress = "WEB-INF/pages/paymentList.jsp";
 
-            } else if (action.equalsIgnoreCase("addPayment")) {
+            } else if (action.equalsIgnoreCase("newPayment")) {
                 List<Student> studentList = studentService.getStudentList();
                 List<Lesson> lessonList = lessonService.getLessonList();
                 List<Teacher> teacherList = teacherService.getTeacherList();
@@ -54,11 +51,26 @@ public class PaymentServlet extends HttpServlet {
                 request.setAttribute("teacherList", teacherList);
                 request.setAttribute("lessonList", lessonList);
                 pageAddress = "views/newPayment.jsp";
+            } else if (action.equalsIgnoreCase("addPayment")) {
+                Long studentId = Long.parseLong(request.getParameter("studentId"));
+                Long teacherId = Long.parseLong(request.getParameter("teacherId"));
+                Long lessonId = Long.parseLong(request.getParameter("lessonId"));
+                Student student = studentService.getStudentById(studentId);
+                TeacherLesson teacherLesson = teacherService.getTeacherLessonByTeacherAndLessonId(teacherId, lessonId);
+                StudentTeacherLesson studentTeacherLesson = studentService.getStudentTeacherLessonById(studentId, teacherLesson.getId());
+                Payment payment = new Payment();
+                payment.setStudentTeacherLesson(studentTeacherLesson);
+                payment.setAmount(Float.valueOf(request.getParameter("amount")));
+                paymentService.addPayment(payment);
+                out.write("success");
+            } else if (action.equalsIgnoreCase("getPaymentData")){
+                List<Payment> paymentList = paymentService.getPaymentList();
+                request.setAttribute("paymentList", paymentList);
+                pageAddress = "WEB-INF/pages/paymentData.jsp";
+                System.out.println("x?");
             }
-
             if (pageAddress != null) {
                 request.getRequestDispatcher(pageAddress).forward(request, response);
-                System.out.println(pageAddress);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

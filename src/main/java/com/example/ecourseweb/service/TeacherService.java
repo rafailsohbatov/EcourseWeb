@@ -21,4 +21,5 @@ public interface TeacherService {
      List<Teacher> getTeacherListByLessonId(Long lessonId) throws Exception;
 
      TeacherLesson getTeacherLessonByTeacherAndLessonId(Long teacherId, Long LessonId) throws Exception;
+    List<Teacher> getTeacherListByLessonIdAndStudentId(Long lessonId,Long studentId) throws Exception;
 }
