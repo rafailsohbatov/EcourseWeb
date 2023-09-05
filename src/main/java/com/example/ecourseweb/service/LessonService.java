@@ -16,6 +16,7 @@ public interface LessonService {
      List<Lesson> getLessonList() throws Exception;
      
      List<Lesson> getLessonByStudentId(Long studentId) throws Exception;
+     Lesson getLessonById(Long lessonId) throws Exception;
 
      void addLesson(Lesson lesson) throws Exception;
 }

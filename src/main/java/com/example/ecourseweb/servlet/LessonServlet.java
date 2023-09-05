@@ -48,6 +48,11 @@ public class LessonServlet extends HttpServlet {
                 lesson.setPrice(Float.valueOf(request.getParameter("price")));
                 lessonService.addLesson(lesson);
                 out.write("success");
+            } else if (action.equalsIgnoreCase("getLessonById")) {
+                Long lessonId = Long.valueOf(request.getParameter("lessonId"));
+                Lesson lesson = lessonService.getLessonById(lessonId);
+                request.setAttribute("lesson",lesson);
+                request.getRequestDispatcher("WEB-INF/pages/lessonList.jsp").forward(request,response);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

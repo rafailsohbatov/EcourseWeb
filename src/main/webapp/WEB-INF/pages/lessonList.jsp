@@ -10,39 +10,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <c:import url="/static/import.jsp"></c:import>
-  <script type="text/javascript" src="js/lesson.js"></script>
+    <c:import url="/static/import.jsp"></c:import>
+    <script type="text/javascript" src="js/lesson.js"></script>
 </head>
 <body>
 <c:import url="/static/header.jsp"></c:import>
 <div class="ui-layout-center">
-  <table class="display" id="lessonTableId">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Time</th>
-      <th>Price</th>
+    <table class="display" id="lessonTableId">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Price</th>
+            <th>Action</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${lessonList}" var="ll" >
-      <tr>
-        <td>${ll.id}</td>
-        <td>${ll.name}</td>
-        <td>${ll.time}</td>
-        <td>${ll.price}</td>
-
-      </tr>
-    </c:forEach>
-    </tbody>
-  </table>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${lessonList}" var="ll">
+            <tr>
+                <td>${ll.id}</td>
+                <td>${ll.name}</td>
+                <td>${ll.time}</td>
+                <td>${ll.price}</td>
+                <td>
+                    <a href="ls?action=getLessonById&lessonId=${ll.id}">Edit </a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 <c:import url="/static/info.jsp"></c:import>
 <c:import url="/static/menu.jsp"></c:import>
 <c:import url="/static/footer.jsp"></c:import>
 <div id="newLessonDialogId">
+
+</div>
+<div id="updateLessonDialogId">
 
 </div>
 </body>

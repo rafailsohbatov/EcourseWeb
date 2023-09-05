@@ -32,6 +32,11 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
+    public Lesson getLessonById(Long lessonId) throws Exception {
+        return lessonDao.getLessonById(lessonId);
+    }
+
+    @Override
     public void addLesson(Lesson lesson) throws Exception {
         lessonDao.addLesson(lesson);
     }

@@ -76,4 +76,22 @@ public class LessonDaoImpl implements LessonDao {
         return lessonList;
     }
 
+    @Override
+    public Lesson getLessonById(Long lessonId) throws Exception {
+        Lesson lesson = new Lesson();
+        String sql = "SELECT L.NAME,L.TIME,L.PRICE FROM LESSON L " +
+                "WHERE L.ACTIVE = 1 AND L.ID = ?";
+        try (Connection c = DBHelper.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
+            ps.setLong(1,lessonId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                lesson.setId(lessonId);
+                lesson.setName(rs.getString("NAME"));
+                lesson.setTime(rs.getInt("TIME"));
+                lesson.setPrice(rs.getFloat("PRICE"));
+            }
+        }
+        return lesson;
+    }
+
 }

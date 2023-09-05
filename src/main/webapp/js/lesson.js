@@ -3,6 +3,7 @@ $(function (){
 
     $('#newBtnId').val('New Lesson')
 
+
     $('#newLessonDialogId').dialog({
         title:'New Lesson',
         modal:true,
@@ -22,6 +23,29 @@ $(function (){
 
     $('#newBtnId').click(function (){
         $('#newLessonDialogId').load('views/newLesson.jsp',function (){
+            $(this).dialog('open');
+        })
+    })
+
+    $('#updateLessonDialogId').dialog({
+        title:'Update Lesson',
+        modal:true,
+        autoOpen:false,
+        height : 400,
+        width:400,
+        buttons:{
+            "Save": function (){
+                $(this).dialog('close');
+            },
+            "Clear":function () {
+                $(this).dialog('close')
+            }
+        }
+    })
+
+    $('#updateBtnId').click(function (){
+        $('#updateLessonDialogId').load(
+            'ls?action=getLessonById&lessonId='+$('#lessonId').val(),function (){
             $(this).dialog('open');
         })
     })
